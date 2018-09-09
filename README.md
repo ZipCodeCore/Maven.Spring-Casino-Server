@@ -33,7 +33,7 @@
     * `CardPlayer` is a `Player` and has a `Hand`
     * `CardDealer` is a `CardPlayer` and has a `Deck`
     
-### `casino.utils` package
+#### `casino.utils` package
 * The `utils` package provides a location to place general utility classes if needed.
 * `RandomGenerator` has been provided to you.
     * Can generate random `int`, `double`, `boolean` objects as well as select random elements from a collection. 
