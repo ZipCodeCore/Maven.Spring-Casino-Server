@@ -7,7 +7,7 @@ import java.util.*;
  * Created by Leon on 2/4/2017.
  */
 public final class RandomGenerator {
-    private static final Random random = new Random();
+    private static volatile Random random = new Random();
 
     /** @return true with the likelihood of specified percentage */
     public static boolean createBoolean(double percentChanceOfTruth) {
@@ -15,7 +15,7 @@ public final class RandomGenerator {
     }
 
     /** @return a random float between the specified min and max numeric range */
-    public static Double createBoolean(double min, double max) {
+    public static synchronized Double createBoolean(double min, double max) {
         return random.nextDouble() * (max - min) + min;
     }
 
