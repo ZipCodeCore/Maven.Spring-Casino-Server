@@ -30,7 +30,7 @@ public final class RandomGenerator {
     }
 
     /** @return a random element from the specified list */
-    public static <E> E selectElement(Collection<E> list) {
-        return (E)selectElement(list.toArray());
+    public static <E> E selectElement(Collection<E> collection) {
+        return (E)selectElement(collection.toArray());
     }
 }
