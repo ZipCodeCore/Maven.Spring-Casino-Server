@@ -1,4 +1,4 @@
-package rocks.zipcodewilmington.casinoapplication.mvc.model.games.toolkit;
+package rocks.zipcodewilmington.casinoapplication.mvc.model.games.cardgame.toolkit;
 
 import org.junit.Assert;
 import org.junit.Test;
