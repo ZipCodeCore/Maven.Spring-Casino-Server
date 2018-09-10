@@ -26,11 +26,11 @@ public final class RandomGenerator {
 
     /** @return a random element from the specified array */
     public static <E> E selectElement(E[] array) {
-        return selectElement(Arrays.asList(array));
+        return array[createInteger(0, array.length - 1)];
     }
 
     /** @return a random element from the specified list */
-    public static <E> E selectElement(List<E> list) {
-        return list.get(createInteger(0, list.size()- 1));
+    public static <E> E selectElement(Collection<E> list) {
+        return (E)selectElement(list.toArray());
     }
 }
