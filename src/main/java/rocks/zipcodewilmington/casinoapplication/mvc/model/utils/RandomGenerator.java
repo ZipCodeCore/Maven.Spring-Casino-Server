@@ -10,8 +10,8 @@ public final class RandomGenerator {
     private static final Random random = new Random();
 
     /** @return true with the likelihood of specified percentage */
-    public static boolean createBoolean(double likelihoodOfTruth) {
-        return likelihoodOfTruth > createBoolean(0, 100);
+    public static boolean createBoolean(double percentChanceOfTruth) {
+        return percentChanceOfTruth > createBoolean(0, 100);
     }
 
     /** @return a random float between the specified min and max numeric range */
