@@ -1,9 +1,16 @@
 package rocks.zipcodewilmington.casinoapplication.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * @author leon on 9/1/18.
  */
+@Entity
 public class CasinoProfile {
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private Double balance;

@@ -10,7 +10,7 @@ import rocks.zipcodewilmington.casinoapplication.services.games.schema.AbstractP
 /**
  * Created by leon.hunter on 2/1/2017.
  */
-public class CardPlayer extends AbstractPlayer {
+abstract public class CardPlayer extends AbstractPlayer {
     private final Hand hand = new Hand();
 
     public CardPlayer(CasinoProfile profile) {

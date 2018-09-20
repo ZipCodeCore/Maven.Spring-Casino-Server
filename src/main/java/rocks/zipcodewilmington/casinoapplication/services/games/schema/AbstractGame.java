@@ -1,5 +1,6 @@
 package rocks.zipcodewilmington.casinoapplication.services.games.schema;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,9 +8,16 @@ import java.util.List;
  * @author leon on 9/8/18.
  * Performs CRUD operations on List object
  */
+@MappedSuperclass
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 abstract public class AbstractGame<TypeOfPlayer extends PlayerInterface>
         implements GameInterface<TypeOfPlayer> {
 
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @OneToMany
     private final List<TypeOfPlayer> playerList;
 
     public AbstractGame() {
@@ -47,5 +55,17 @@ abstract public class AbstractGame<TypeOfPlayer extends PlayerInterface>
                 .filter(player -> player.getId().equals(id))
                 .findFirst()
                 .get();
+    }
+
+    public List<TypeOfPlayer> getPlayerList() {
+        return playerList;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
