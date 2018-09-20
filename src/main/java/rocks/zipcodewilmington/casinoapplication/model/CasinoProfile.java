@@ -1,5 +1,8 @@
 package rocks.zipcodewilmington.casinoapplication.model;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -43,5 +46,16 @@ public class CasinoProfile {
 
     public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+
+    @Override
+    public String toString() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            throw new Error(e);
+        }
     }
 }

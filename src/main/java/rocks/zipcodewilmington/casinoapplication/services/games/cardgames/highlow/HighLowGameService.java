@@ -3,7 +3,7 @@ package rocks.zipcodewilmington.casinoapplication.services.games.cardgames.highl
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rocks.zipcodewilmington.casinoapplication.model.games.cardgames.highlow.HighLowGame;
-import rocks.zipcodewilmington.casinoapplication.repository.games.cardgames.highlow.HighLowRepository.HighLowGameRepository;
+import rocks.zipcodewilmington.casinoapplication.repository.games.cardgames.highlow.HighLowGameRepository;
 
 /**
  * @author leon on 9/20/18.

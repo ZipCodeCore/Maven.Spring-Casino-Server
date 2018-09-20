@@ -1,11 +1,11 @@
 package rocks.zipcodewilmington.casinoapplication.services.games.schema;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import rocks.zipcodewilmington.casinoapplication.model.CasinoProfile;
 
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
+import javax.swing.tree.RowMapper;
 
 /**
  * @author leon on 9/1/18.
@@ -13,22 +13,41 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 abstract public class AbstractPlayer implements PlayerInterface {
-    private final CasinoProfile profile;
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @OneToOne
+    private CasinoProfile casinoProfile;
+
 
     public AbstractPlayer(CasinoProfile profile) {
-        this.profile = profile;
+        this.casinoProfile = profile;
     }
 
-    public CasinoProfile getProfile() {
-        return profile;
+    public CasinoProfile getCasinoProfile() {
+        return casinoProfile;
     }
 
     public String getName() {
-        return profile.getName();
+        return casinoProfile.getName();
     }
 
-    @Id
     public Long getId() {
-        return profile.getId();
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            throw new Error(e);
+        }
     }
 }

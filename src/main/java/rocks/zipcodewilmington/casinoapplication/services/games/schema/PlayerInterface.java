@@ -6,7 +6,7 @@ import rocks.zipcodewilmington.casinoapplication.model.CasinoProfile;
  * @author leon on 9/1/18.
  */
 interface PlayerInterface {
-    CasinoProfile getProfile();
+    CasinoProfile getCasinoProfile();
     String getName();
     Long getId();
 }

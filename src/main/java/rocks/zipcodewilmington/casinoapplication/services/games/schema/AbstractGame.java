@@ -17,7 +17,7 @@ abstract public class AbstractGame<TypeOfPlayer extends PlayerInterface>
     @GeneratedValue
     private Long id;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private final List<TypeOfPlayer> playerList;
 
     public AbstractGame() {

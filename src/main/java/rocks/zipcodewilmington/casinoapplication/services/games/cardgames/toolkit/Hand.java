@@ -3,12 +3,37 @@ package rocks.zipcodewilmington.casinoapplication.services.games.cardgames.toolk
 /**
  * @author leon on 9/8/18.
  */
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+@Entity
 public class Hand implements Iterable<Card> {
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @ElementCollection(targetClass = Card.class)
     private List<Card> cardList = new ArrayList<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Card> getCardList() {
+        return cardList;
+    }
+
+    public void setCardList(List<Card> cardList) {
+        this.cardList = cardList;
+    }
 
     public boolean isEmpty() {
         return size() < 1;

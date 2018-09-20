@@ -1,4 +1,4 @@
-package rocks.zipcodewilmington.casinoapplication.repository.games.cardgames.highlow.HighLowRepository;
+package rocks.zipcodewilmington.casinoapplication.repository.games.cardgames.highlow;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

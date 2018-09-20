@@ -6,15 +6,32 @@ import rocks.zipcodewilmington.casinoapplication.services.games.cardgames.toolki
 import rocks.zipcodewilmington.casinoapplication.services.games.cardgames.toolkit.Hand;
 import rocks.zipcodewilmington.casinoapplication.services.games.schema.AbstractPlayer;
 
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
+
 
 /**
  * Created by leon.hunter on 2/1/2017.
  */
+@MappedSuperclass
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class CardPlayer extends AbstractPlayer {
-    private final Hand hand = new Hand();
+
+    @OneToOne
+    private Hand hand;
 
     public CardPlayer(CasinoProfile profile) {
         super(profile);
+    }
+
+    public Hand getHand() {
+        return hand;
+    }
+
+    public void setHand(Hand hand) {
+        this.hand = hand;
     }
 
     /**
@@ -27,12 +44,5 @@ public class CardPlayer extends AbstractPlayer {
 
     public void getCard(Deck deck) {
         addCard(deck.pop());
-    }
-
-    @Override
-    public String toString() {
-        return "CardPlayer{" +
-                "hand=" + hand +
-                '}';
     }
 }
