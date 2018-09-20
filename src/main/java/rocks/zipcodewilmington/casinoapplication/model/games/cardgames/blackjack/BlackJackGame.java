@@ -7,4 +7,8 @@ import rocks.zipcodewilmington.casinoapplication.services.games.schema.AbstractG
  */
 public class BlackJackGame extends AbstractGame<BlackJackPlayer> {
 
+    @Override
+    public BlackJackPlayer evaluateTurn(BlackJackPlayer blackJackPlayer) {
+        return null;
+    }
 }

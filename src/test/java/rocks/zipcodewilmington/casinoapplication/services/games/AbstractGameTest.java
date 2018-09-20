@@ -1,6 +1,7 @@
 package rocks.zipcodewilmington.casinoapplication.services.games;
 
 import org.junit.Test;
+import rocks.zipcodewilmington.casinoapplication.model.games.cardgames.blackjack.BlackJackGame;
 import rocks.zipcodewilmington.casinoapplication.model.games.cardgames.blackjack.BlackJackPlayer;
 import rocks.zipcodewilmington.casinoapplication.services.games.schema.AbstractGame;
 
@@ -10,7 +11,7 @@ import rocks.zipcodewilmington.casinoapplication.services.games.schema.AbstractG
 public class AbstractGameTest {
     @Test
     public void testBlackJackGame() {
-        AbstractGame<BlackJackPlayer> blackJackPlayerAbstractGame = new AbstractGame<BlackJackPlayer>(){};
+        AbstractGame<BlackJackPlayer> blackJackPlayerAbstractGame = new BlackJackGame();
 
         blackJackPlayerAbstractGame.addPlayer(new BlackJackPlayer(null));
         blackJackPlayerAbstractGame.removePlayer(new BlackJackPlayer(null));

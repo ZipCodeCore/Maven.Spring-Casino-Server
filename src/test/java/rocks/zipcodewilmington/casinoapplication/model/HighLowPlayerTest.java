@@ -20,6 +20,5 @@ public class HighLowPlayerTest {
 
         // then
         Assert.assertEquals(expected, actual);
-
     }
 }

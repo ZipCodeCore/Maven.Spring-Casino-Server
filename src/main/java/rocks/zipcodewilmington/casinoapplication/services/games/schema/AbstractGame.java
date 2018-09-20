@@ -1,5 +1,9 @@
 package rocks.zipcodewilmington.casinoapplication.services.games.schema;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import rocks.zipcodewilmington.casinoapplication.model.games.cardgames.highlow.HighLowPlayer;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,4 +72,17 @@ abstract public class AbstractGame<TypeOfPlayer extends PlayerInterface>
     public void setId(Long id) {
         this.id = id;
     }
+
+
+    @Override
+    public String toString() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            throw new Error(e);
+        }
+    }
+
+    public abstract TypeOfPlayer evaluateTurn(TypeOfPlayer player);
 }

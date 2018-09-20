@@ -1,12 +1,18 @@
 package rocks.zipcodewilmington.casinoapplication.services.games.cardgames.toolkit;
 
-import java.util.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * @author leon on 9/8/18.
  */
 public class Deck implements Iterable<Card> {
-    private Stack<Card> cardStack = new Stack<>();
+    private List<Card> cardStack = new Stack<>();
 
     public Deck() {
         for (Suit suit : Suit.values()) {
@@ -17,15 +23,18 @@ public class Deck implements Iterable<Card> {
     }
 
     public Card pop() {
-        return cardStack.pop();
+        Card topCard = peek();
+        cardStack.remove(0);
+        return topCard;
     }
 
     public Card push(Card card) {
-        return cardStack.push(card);
+        cardStack.add(card);
+        return card;
     }
 
     public Card peek() {
-        return cardStack.peek();
+        return cardStack.get(0);
     }
 
     public boolean isEmpty() {
@@ -47,8 +56,11 @@ public class Deck implements Iterable<Card> {
 
     @Override
     public String toString() {
-        List<Card> list = new ArrayList<>();
-        iterator().forEachRemaining(list::add);
-        return list.toString();
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            throw new Error(e);
+        }
     }
 }
