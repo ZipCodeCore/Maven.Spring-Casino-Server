@@ -5,10 +5,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import rocks.zipcodewilmington.casinoapplication.model.games.cardgames.highlow.HighLowGame;
 import rocks.zipcodewilmington.casinoapplication.services.games.cardgames.highlow.HighLowGameService;
@@ -19,6 +16,7 @@ import java.net.URI;
  * @author leon on 9/20/18.
  */
 @Controller
+@RequestMapping(value = "/casino/highlow")
 public class HighLowGameController {
     private final HighLowGameService highLowService;
 
@@ -47,14 +45,14 @@ public class HighLowGameController {
         return new ResponseEntity<>(game, HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<HighLowGame> getGame(Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<HighLowGame> getGame(@PathVariable Long id) {
         HighLowGame game = highLowService.getGame(id);
         return new ResponseEntity<>(game, HttpStatus.OK);
     }
 
-    @DeleteMapping
-    public ResponseEntity<HighLowGame> deleteGame(Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HighLowGame> deleteGame(@PathVariable Long id) {
         HighLowGame game = highLowService.deleteGame(id);
         return new ResponseEntity<>(game, HttpStatus.OK);
     }

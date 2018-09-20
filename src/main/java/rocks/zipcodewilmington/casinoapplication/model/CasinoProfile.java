@@ -18,6 +18,9 @@ public class CasinoProfile {
     private String name;
     private Double balance;
 
+    public CasinoProfile() {
+    }
+
     public CasinoProfile(Long id, String name, Double balance) {
         this.id = id;
         this.name = name;
