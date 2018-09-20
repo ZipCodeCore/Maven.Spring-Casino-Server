@@ -15,7 +15,8 @@ import java.net.URI;
 /**
  * @author leon on 9/8/18.
  */
-@Controller(value = "/casino/profile")
+@Controller
+@RequestMapping(value = "/casino/profile")
 public class CasinoProfileController {
     private final CasinoProfileService service;
 
@@ -25,7 +26,7 @@ public class CasinoProfileController {
     }
 
     @PostMapping
-    public ResponseEntity<CasinoProfile> createProfile(CasinoProfile profile) {
+    public ResponseEntity<CasinoProfile> createProfile(@RequestBody CasinoProfile profile) {
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
@@ -39,20 +40,25 @@ public class CasinoProfileController {
     }
 
     @PutMapping
-    public ResponseEntity<CasinoProfile> updateProfile(CasinoProfile profile) {
-        CasinoProfile game = service.updateGame(profile);
+    public ResponseEntity<CasinoProfile> updateProfile(@RequestBody CasinoProfile profile) {
+        CasinoProfile game = service.updateProfile(profile);
         return new ResponseEntity<>(game, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<CasinoProfile> getProfile(@PathVariable Long id) {
-        CasinoProfile game = service.getGame(id);
+        CasinoProfile game = service.getProfile(id);
         return new ResponseEntity<>(game, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<CasinoProfile> deleteProfile(@PathVariable Long id) {
-        CasinoProfile game = service.deleteGame(id);
+        CasinoProfile game = service.deleteProfile(id);
         return new ResponseEntity<>(game, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<Iterable<CasinoProfile>> getAll() {
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 }

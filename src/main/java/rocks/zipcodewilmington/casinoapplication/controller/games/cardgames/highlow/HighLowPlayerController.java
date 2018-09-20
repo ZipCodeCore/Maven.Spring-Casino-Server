@@ -21,12 +21,12 @@ public class HighLowPlayerController {
     private final HighLowPlayerService highLowService;
 
     @Autowired
-    private HighLowPlayerController(HighLowPlayerService highLowService) {
+    private HighLowPlayerController(@RequestBody HighLowPlayerService highLowService) {
         this.highLowService = highLowService;
     }
 
     @PostMapping
-    public ResponseEntity<HighLowPlayer> createPlayer(HighLowPlayer player) {
+    public ResponseEntity<HighLowPlayer> createPlayer(@RequestBody HighLowPlayer player) {
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
@@ -40,20 +40,20 @@ public class HighLowPlayerController {
     }
 
     @PutMapping
-    public ResponseEntity<HighLowPlayer> updatePlayer(HighLowPlayer highLowGame) {
-        HighLowPlayer game = highLowService.updatePlayer(highLowGame);
-        return new ResponseEntity<>(game, HttpStatus.OK);
+    public ResponseEntity<HighLowPlayer> updatePlayer(@RequestBody HighLowPlayer player) {
+        player = highLowService.updatePlayer(player);
+        return new ResponseEntity<>(player, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<HighLowPlayer> getPlayer(@PathVariable Long id) {
-        HighLowPlayer game = highLowService.getPlayer(id);
-        return new ResponseEntity<>(game, HttpStatus.OK);
+        HighLowPlayer player = highLowService.getPlayer(id);
+        return new ResponseEntity<>(player, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<HighLowPlayer> deletePlayer(@PathVariable Long id) {
-        HighLowPlayer game = highLowService.deletePlayer(id);
-        return new ResponseEntity<>(game, HttpStatus.OK);
+        HighLowPlayer player = highLowService.deletePlayer(id);
+        return new ResponseEntity<>(player, HttpStatus.OK);
     }
 }

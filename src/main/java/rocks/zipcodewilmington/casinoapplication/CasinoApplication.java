@@ -33,10 +33,10 @@ public class CasinoApplication {
     public CommandLineRunner run(RestTemplate restTemplate) {
         return args -> {
             String[] names = {"Leon", "Wilhem", "Domi"};
-            for (Integer i = 0; i < names.length; i++) {
-                String profileName = names[i];
+            for (Integer i = 0; i < names.length;) {
+                String profileName = names[i++];
                 CasinoProfile cp = new CasinoProfile(i.longValue(), profileName, 0.0);
-//                service.createProfile(cp);
+                service.createProfile(cp);
             }
         };
     }

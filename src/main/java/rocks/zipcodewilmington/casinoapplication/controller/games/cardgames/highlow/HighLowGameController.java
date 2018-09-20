@@ -16,7 +16,7 @@ import java.net.URI;
  * @author leon on 9/20/18.
  */
 @Controller
-@RequestMapping(value = "/casino/highlow")
+@RequestMapping(value = "/casino/highlow/game")
 public class HighLowGameController {
     private final HighLowGameService highLowService;
 
@@ -26,7 +26,7 @@ public class HighLowGameController {
     }
 
     @PostMapping
-    public ResponseEntity<HighLowGame> postGame(HighLowGame highLowGame) {
+    public ResponseEntity<HighLowGame> postGame(@RequestBody HighLowGame highLowGame) {
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
@@ -40,7 +40,7 @@ public class HighLowGameController {
     }
 
     @PutMapping
-    public ResponseEntity<HighLowGame> updateGame(HighLowGame highLowGame) {
+    public ResponseEntity<HighLowGame> updateGame(@RequestBody HighLowGame highLowGame) {
         HighLowGame game = highLowService.updateGame(highLowGame);
         return new ResponseEntity<>(game, HttpStatus.OK);
     }
