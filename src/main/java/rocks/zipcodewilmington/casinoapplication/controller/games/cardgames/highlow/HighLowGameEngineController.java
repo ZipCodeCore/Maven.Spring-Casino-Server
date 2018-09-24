@@ -17,7 +17,7 @@ public class HighLowGameEngineController {
     @Autowired
     private HighLowGameEngineService service;
 
-    @PutMapping("/getCard/{gameId}")
+    @PutMapping("/getCard/{gameId}/{playerId}")
     public ResponseEntity<HighLowPlayer> getCard(
             @PathVariable Long playerId,
             @PathVariable Long gameId) {
