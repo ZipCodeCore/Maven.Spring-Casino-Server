@@ -27,6 +27,8 @@ public class HighLowPlayerController {
 
     @PostMapping
     public ResponseEntity<HighLowPlayer> createPlayer(@RequestBody HighLowPlayer player) {
+        highLowService.postPlayer(player);
+        
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
@@ -35,7 +37,6 @@ public class HighLowPlayerController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(uri);
 
-        highLowService.postPlayer(player);
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 

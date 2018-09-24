@@ -27,6 +27,8 @@ public class HighLowGameController {
 
     @PostMapping
     public ResponseEntity<HighLowGame> postGame(@RequestBody HighLowGame highLowGame) {
+        highLowGame = highLowService.postGame(highLowGame);
+
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
@@ -35,7 +37,6 @@ public class HighLowGameController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(uri);
 
-        highLowService.postGame(highLowGame);
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 

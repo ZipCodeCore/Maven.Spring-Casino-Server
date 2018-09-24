@@ -18,6 +18,7 @@ public class HighLowGameTest {
         String actual = game.toString();
 
         // then
+        System.out.println(expected);
         Assert.assertEquals(expected, actual);
     }
 }
