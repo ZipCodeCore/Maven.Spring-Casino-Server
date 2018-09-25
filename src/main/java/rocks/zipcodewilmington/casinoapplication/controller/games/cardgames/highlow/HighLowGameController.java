@@ -42,8 +42,8 @@ public class HighLowGameController {
     }
 
     @PutMapping
-    public ResponseEntity<HighLowGame> updateGame(@RequestBody HighLowGame highLowGame) {
-        HighLowGame game = highLowService.updateGame(highLowGame);
+    public ResponseEntity<HighLowGame> updateGame(@PathVariable Long id) {
+        HighLowGame game = highLowService.updateGame(highLowService.getGame(id));
         return new ResponseEntity<>(game, HttpStatus.OK);
     }
 
