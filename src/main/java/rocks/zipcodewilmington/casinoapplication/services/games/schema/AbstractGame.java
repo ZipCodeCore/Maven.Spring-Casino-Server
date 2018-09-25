@@ -61,10 +61,6 @@ abstract public class AbstractGame<TypeOfPlayer extends PlayerInterface>
                 .get();
     }
 
-    public List<TypeOfPlayer> getPlayerList() {
-        return playerList;
-    }
-
     public Long getId() {
         return id;
     }
