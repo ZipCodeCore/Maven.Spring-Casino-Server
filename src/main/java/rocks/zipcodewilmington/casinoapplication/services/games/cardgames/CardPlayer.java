@@ -22,6 +22,10 @@ public class CardPlayer extends AbstractPlayer {
     @OneToOne
     private Hand hand;
 
+    public CardPlayer() {
+
+    }
+
     public CardPlayer(CasinoProfile profile) {
         super(profile);
     }

@@ -16,6 +16,7 @@ import java.net.URI;
  * @author leon on 9/20/18.
  */
 @Controller
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/casino/highlow/game")
 public class HighLowGameController {
     private final HighLowGameService highLowService;
@@ -37,7 +38,7 @@ public class HighLowGameController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(uri);
 
-        return new ResponseEntity<>(headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(highLowGame, HttpStatus.CREATED);
     }
 
     @PutMapping
