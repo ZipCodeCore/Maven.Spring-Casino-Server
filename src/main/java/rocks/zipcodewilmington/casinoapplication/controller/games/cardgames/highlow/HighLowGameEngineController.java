@@ -13,7 +13,7 @@ import rocks.zipcodewilmington.casinoapplication.services.games.cardgames.highlo
  */
 @Controller
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(value = "/casino/highlowengine")
+@RequestMapping(value = "/casino/highlow/engine")
 public class HighLowGameEngineController {
     private HighLowGameEngineService service;
 
