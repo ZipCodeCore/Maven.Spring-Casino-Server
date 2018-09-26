@@ -22,7 +22,7 @@ public enum Rank {
     private final Integer secondaryValue;
 
     Rank(int value) {
-        this(value, null);
+        this(value, value);
     }
 
     Rank(Integer value, Integer secondaryValue) {
