@@ -16,6 +16,7 @@ import java.net.URI;
  * @author leon on 9/8/18.
  */
 @Controller
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/casino/profile")
 public class CasinoProfileController {
     private final CasinoProfileService service;

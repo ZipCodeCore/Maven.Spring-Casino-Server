@@ -6,10 +6,7 @@ import rocks.zipcodewilmington.casinoapplication.services.games.cardgames.toolki
 import rocks.zipcodewilmington.casinoapplication.services.games.cardgames.toolkit.Hand;
 import rocks.zipcodewilmington.casinoapplication.services.games.schema.AbstractPlayer;
 
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 
 /**
@@ -19,8 +16,12 @@ import javax.persistence.OneToOne;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class CardPlayer extends AbstractPlayer {
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Hand hand;
+
+    public CardPlayer() {
+
+    }
 
     public CardPlayer(CasinoProfile profile) {
         super(profile);

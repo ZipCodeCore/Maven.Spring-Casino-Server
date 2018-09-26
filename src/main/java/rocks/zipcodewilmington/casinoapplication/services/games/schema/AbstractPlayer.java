@@ -20,6 +20,9 @@ abstract public class AbstractPlayer implements PlayerInterface {
     @OneToOne
     private CasinoProfile casinoProfile;
 
+    public AbstractPlayer() {
+
+    }
 
     public AbstractPlayer(CasinoProfile profile) {
         this.casinoProfile = profile;
@@ -28,6 +31,8 @@ abstract public class AbstractPlayer implements PlayerInterface {
     public CasinoProfile getCasinoProfile() {
         return casinoProfile;
     }
+
+    public void setCasinoProfile(CasinoProfile casinoProfile) { this.casinoProfile = casinoProfile;}
 
     public String getName() {
         return casinoProfile.getName();

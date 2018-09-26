@@ -22,6 +22,6 @@ public class HighLowGameEngineService {
     public HighLowPlayer getCard(Long playerId, Long gameId) {
         HighLowPlayer player = playerService.getPlayer(playerId);
         HighLowGame game = gameService.getGame(gameId);
-        return game.evaluateTurn(player);
+        return playerService.updatePlayer(game.evaluateTurn(player));
     }
 }

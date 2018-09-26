@@ -10,6 +10,10 @@ import javax.persistence.Entity;
  */
 @Entity
 public class HighLowPlayer extends CardPlayer {
+    public HighLowPlayer() {
+
+    }
+
     public HighLowPlayer(CasinoProfile profile) {
         super(profile);
     }

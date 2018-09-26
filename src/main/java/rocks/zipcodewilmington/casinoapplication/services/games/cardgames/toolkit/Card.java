@@ -18,6 +18,11 @@ public class Card {
     @Enumerated(EnumType.STRING)
     private final Suit suit;
 
+    public Card() {
+        this.rank = null;
+        this.suit = null;
+    }
+
     public Card(Rank rank, Suit suit) {
         this.rank = rank;
         this.suit = suit;
