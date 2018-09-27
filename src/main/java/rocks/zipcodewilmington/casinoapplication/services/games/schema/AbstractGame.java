@@ -2,7 +2,6 @@ package rocks.zipcodewilmington.casinoapplication.services.games.schema;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import rocks.zipcodewilmington.casinoapplication.model.games.cardgames.highlow.HighLowPlayer;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,39 +21,39 @@ abstract public class AbstractGame<TypeOfPlayer extends PlayerInterface>
     private Long id;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private final List<TypeOfPlayer> playerList;
+    private final List<TypeOfPlayer> players;
 
     public AbstractGame() {
         this(new ArrayList<>());
     }
 
     public AbstractGame(List<TypeOfPlayer> playerList) {
-        this.playerList = playerList;
+        this.players = playerList;
     }
 
     @Override
     public void addPlayer(TypeOfPlayer player) {
-        playerList.add(player);
+        players.add(player);
     }
 
     @Override
     public void removePlayer(TypeOfPlayer player) {
-        playerList.remove(player);
+        players.remove(player);
     }
 
     @Override
     public Boolean contains(TypeOfPlayer player) {
-        return playerList.contains(player);
+        return players.contains(player);
     }
 
     @Override
     public Iterable<TypeOfPlayer> getPlayers() {
-        return playerList;
+        return players;
     }
 
     @Override
     public TypeOfPlayer getPlayer(Long id) {
-        return playerList
+        return players
                 .stream()
                 .filter(player -> player.getId().equals(id))
                 .findFirst()
