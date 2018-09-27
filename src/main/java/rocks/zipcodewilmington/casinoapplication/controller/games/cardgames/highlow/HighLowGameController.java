@@ -30,20 +30,12 @@ public class HighLowGameController {
     public ResponseEntity<HighLowGame> postGame(@RequestBody HighLowGame highLowGame) {
         highLowGame = highLowService.postGame(highLowGame);
 
-        URI uri = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(highLowGame.getId())
-                .toUri();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(uri);
-
         return new ResponseEntity<>(highLowGame, HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<HighLowGame> updateGame(@PathVariable Long id) {
-        HighLowGame game = highLowService.updateGame(highLowService.getGame(id));
+    public ResponseEntity<HighLowGame> updateGame(@RequestBody HighLowGame game) {
+        game = highLowService.updateGame(game);
         return new ResponseEntity<>(game, HttpStatus.OK);
     }
 
